@@ -1,0 +1,28 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1475487794724.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "A990071B",
+    "lastKnownWriteTime" : 1475404689,
+    "last_content_update" : 1475487794724,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "n7d2vbgu1x",
+        "caption" : "NH11",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=NH11&cache_key=n7d2vbgu1x",
+        "displayedObservations" : 33014,
+        "environment" : "",
+        "object" : "NH11",
+        "totalObservations" : 33014,
+        "variables" : 36
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
