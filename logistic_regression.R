@@ -107,29 +107,38 @@ NH11$everwrk <- factor(NH11$everwrk, levels=c("2 No", "1 Yes"))
 ever.out <- glm(everwrk~age_p+r_maritl,
                data=NH11, family="binomial")
 coef(summary(ever.out))
-summary(ever.out)
+
 ##   2. Predict the probability of working for each level of marital
 ##      status.
 
+## Created second regression leaving out age_p.
 ever.out2 <- glm(everwrk~r_maritl,
                 data=NH11, family="binomial")
 summary(ever.out2)
 
+#Check levels of r_maritl - (marital statuses) 
 levels(NH11$r_maritl)
+
+#Remove unused marital statuses from the dataframe object
+NH11 <- droplevels(NH11[!is.na(NH11$everwrk),])
 # Create a dataset with predictors set at desired levels
-predDatB <- with(NH11,
-                expand.grid(r_maritl = levels(r_maritl)))
+
+#Create logistical regression object for running predictions
+ever.out2 <- glm(everwrk~r_maritl,
+                 data=NH11, family="binomial")
+#Summarizing regression for checking purposes
+summary(ever.out2)
+
+#Create the dataset.
+predDatB <- data.frame(r_maritl = levels(NH11$r_maritl))
 
 # predict everwrk at those levels
 cbind(predDatB, predict(ever.out2, type = "response",
-                       se.fit = TRUE, interval="confidence",
-                       newdata = predDatB))
+                        se.fit = TRUE, interval="confidence",
+                        newdata = predDatB))
 
-predict(ever.out2, type = "response",
-        se.fit = TRUE, interval="confidence",
-        newdata = predDatB)
 
 ##   Note that the data is not perfectly clean and ready to be modeled. You
 ##   will need to clean up at least some of the variables before fitting
 ##   the model.
-##NH11$everwrk <- factor(NH11$everwrk, levels=c("2 No", "1 Yes"))
+## Cleanup performed on lines 105 & 122.
